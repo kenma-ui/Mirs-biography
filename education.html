@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mira's Biography</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .main {
+      width: 100%;
+      height: auto;
+      background-color: #eaf9fe;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      font-family: 'Arial', sans-serif;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .navbar {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      padding: 20px 0;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f6b7b7;
+      border-radius: 8px;
+    }
+
+    .navbar .logo {
+      font-size: 17px;
+      color: #e952ad;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .navbar .logo:hover {
+      color: #e952ad;
+      text-shadow: 0 0 25px black;
+      transform: scale(1.1);
+    }
+
+    span {
+      color: rgb(49, 216, 49);
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: #032503;
+    }
+
+    .info {
+      margin-left: 7%;
+      margin-top: 10%;
+      color: #333;
+    }
+
+    .info h1 {
+      font-size: 60px;
+      letter-spacing: 2px;
+      line-height: 70px;
+      color: #2c3e50;
+    }
+
+    .info h3 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      line-height: 28px;
+      color: #7f8c8d;
+    }
+
+    .info span {
+      color: #66cc66;
+    }
+
+    .info a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: #2c3e50;
+      margin: 26px 0;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .info a:hover {
+      background: #66cc66;
+    }
+
+    .education {
+      margin-top: 50px;
+      width: 90%;
+      margin-left: 5%;
+      text-align: center;
+    }
+
+    .education h2 {
+      font-size: 28px;
+      color: #1d71a5;
+      margin-bottom: 20px;
+    }
+
+    .education .edu-item img {
+  width: 300px; /* Increased width */
+  height: 200px; /* Increased height */
+  border-radius: 8px;
+  border: 5px solid #1d71a5; /* Added a blue frame */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.education .edu-item:hover img {
+  transform: scale(1.08); /* Slightly enhanced hover effect */
+  border-color: #66cc66; /* Change frame color on hover */
+}
+
+    .education .edu-item .edu-info {
+      display: none;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      color: #333;
+    }
+
+    /* Specific fix for the third image */
+    .education .edu-item img[alt="Education 3"] {
+      object-fit: contain; /* Preserves the entire image */
+      height: 250px; /* Adjusted height for vertical orientation */
+    }
+
+    .education .edu-item:hover img {
+      transform: scale(1.08); /* Slightly enhanced hover effect */
+    }
+</style>
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+
+    <div class="navbar">
+      <a href="index.html" class="logo">MIR<span>s.</span>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT ME</a></li>
+        <li><a href="education.html">EDUCATIONAL</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <div class="education" id="education">
+      <h2> Educational Background</h2>
+      <div class="edu-item" onclick="toggleEduInfo(1)">
+        <img src="kolej matrikulasi labuan.PNG" alt="Education 1">
+        <div class="edu-info" id="edu-info-1">
+          <p><strong>Certificate:</strong> Sijil Matrikulasi KPM</p>
+          <p><strong>Kolej:</strong> Labuan Matriculation College</p>
+          <p><strong>Year:</strong> 2015-2019</p>
+        </div>
+      </div>
+
+      <div class="edu-item" onclick="toggleEduInfo(2)">
+        <img src="ameerapo.jpeg" alt="Education 2">
+        <div class="edu-info" id="edu-info-2">
+          <p><strong>Degree:</strong> Bachelor of Science with Honours</p>
+          <p><strong>University:</strong> Universiti Malaysia Sarawak (UNIMAS)</p>
+          <p><strong>Year:</strong> 2013-2017</p>
+        </div>
+      </div>
+
+      <div class="edu-item" onclick="toggleEduInfo(3)">
+        <img src="master.jpeg" alt="Education 3">
+        <div class="edu-info" id="edu-info-3">
+          <p><strong>Master:</strong> Master of Environmental Science</p>
+          <p><strong>University:</strong> Universiti Malaysia Sarawak (UNIMAS)</p>
+          <p><strong>Year:</strong> 2018-2020</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleEduInfo(id) {
+      var eduInfo = document.getElementById("edu-info-" + id);
+      if (eduInfo.style.display === "block") {
+        eduInfo.style.display = "none";
+      } else {
+        eduInfo.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
+
+</section>
+
+<!-- Footer Section -->
+<footer style="background: #000000; color: #fff; padding: 2rem 0; text-align: center; margin-top: 2rem;">
+    <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+        <!-- Social Media Links -->
+        <div class="social-media" style="margin-bottom: 1rem;">
+            <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t4zIDHz8l7&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t24unUa3Yj&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links" style="margin-bottom: 1rem;">
+            <a href="index.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Home</a>
+            <a href="about.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">About</a>
+            <a href="education.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Education</a>
+            <a href="gallery.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Gallery</a>
+            <a href="contact.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Contact</a>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright" style="font-size: 0.9rem;">
+            <p>&copy; 2025 Ammera Portfolio. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+

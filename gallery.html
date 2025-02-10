@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Zoom and Slide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eaf9fe;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #f6b7b7;
+            padding: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 17px;
+            color: #e952ad;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .navbar .logo:hover {
+            color: #e952ad;
+            text-shadow: 0 0 25px black;
+            transform: scale(1.1);
+        }
+
+        span {
+            color: rgb(49, 216, 49);
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-right: 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lightbox .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox .arrow.left {
+            left: 20px;
+        }
+
+        .lightbox .arrow.right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo">MIR<span>s.</span></a>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT ME</a></li>
+            <li><a href="education.html">EDUCATIONAL</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </div>
+
+    <div class="gallery">
+        <img src="miwa1.jpeg" alt="Movie">
+        <img src="miwa2.jpeg" alt="Do I look beautiful">
+        <img src="miwa3.jpeg" alt="Good">
+        <img src="miwa4.jpeg" alt="With my mom">
+        <img src="miwa5.jpeg" alt="Coffee time">
+        <img src="miwa6.jpeg" alt="Feeling pretty today">
+        <img src="miwa7.jpeg" alt="Peace">
+        <img src="ameerave.jpeg" alt="Subway time">
+        <img src="ameeraiu.jpeg" alt="What you lookin at">
+        <img src="beach.jpeg" alt="This is beach Image">
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close" id="close">&times;</span>
+        <span class="arrow left" id="prev">&#10094;</span>
+        <img src="" alt="">
+        <span class="arrow right" id="next">&#10095;</span>
+    </div>
+
+    <script>
+        // Get all the images in the gallery
+        const images = document.querySelectorAll('.gallery img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('img');
+        const closeBtn = document.getElementById('close');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentImageIndex = 0;
+
+        // Show lightbox
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImage.src = img.src;
+                currentImageIndex = index;
+            });
+        });
+
+        // Close lightbox
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        // Previous image
+        prevBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            lightboxImage.src = images[currentImageIndex].src;
+        });
+
+        // Next image
+        nextBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            lightboxImage.src = images[currentImageIndex].src;
+        });
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+
+    <footer style="background: #000000; color: #fff; padding: 2rem 0; text-align: center; margin-top: 2rem;">
+        <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="social-media" style="margin-bottom: 1rem;">
+                <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t4zIDHz8l7&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t24unUa3Yj&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div class="footer-links" style="margin-bottom: 1rem;">
+                <a href="index.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Home</a>
+                <a href="about.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">About</a>
+                <a href="education.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Education</a>
+                <a href="gallery.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Gallery</a>
+                <a href="contact.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Contact</a>
+            </div>
+            <div class="copyright" style="font-size: 0.9rem;">
+                <p>&copy; 2025 Ammera Portfolio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

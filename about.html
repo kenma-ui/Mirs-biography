@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mira's Biography</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Main Section */
+    .main {
+      width: 100%;
+      height: 100vh;
+      background-color: #eaf9fe; /* Soft blue background */
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      font-family: 'Arial', sans-serif;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      padding: 20px 0;
+      align-items: center;
+      justify-content: space-between;
+      background-color:  #f6b7b7;
+      border-radius: 8px;
+    }
+
+    .navbar .logo {
+    font-size: 17px;
+    color: #e952ad;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.navbar .logo:hover{
+    color: #e952ad;
+    text-shadow: 0 0 25px black;
+    transform: scale(1.1);
+}
+
+span{
+    color: #FFF0AA; 
+}
+
+    
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #eaf9fe; /* Soft blue background */
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: #032503; /* Soft green on hover */
+    }
+
+    /* Info Section */
+    .info {
+      margin-left: 7%;
+      margin-top: 10%;
+      color: #0b0909; /* Dark text for better contrast */
+    }
+
+    .info h1 {
+      font-size: 60px;
+      letter-spacing: 2px;
+      line-height: 70px;
+      color: #FFF0AA;
+    }
+
+    .info h3 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      line-height: 28px;
+      color: #7f8c8d; /* Slightly lighter color for the subheading */
+    }
+
+    .info span {
+      color: #0c1a0c; /* Accent color */
+    }
+
+    .info a {
+      display: inline-block;
+      text-decoration: none;
+      color: #bc4f4f;
+      background: #2c3e50;
+      margin: 26px 0;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .info a:hover {
+      background: #66cc66;
+    }
+
+    /* About Me Section */
+    .about-me {
+      margin: 20px auto;
+      padding: 25px;
+      width: 80%;
+      background-color: #eaf9fe; /* Soft blue background */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: #333;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .about-me h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #e952ad; /* Dark color for section title */
+    }
+
+    .about-me .tooltip-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      font-weight: bold;
+      color: #3498db; /* Soft blue for tooltips */
+    }
+
+    .about-me .tooltip-container .tooltip {
+      visibility: hidden;
+      width: 200px;
+      background-color: #333;
+      color: #eaf9fe; /* Soft blue background */
+      text-align: center;
+      border-radius: 5px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      pointer-events: none;
+    }
+
+    .about-me .tooltip-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .about-me .tooltip-container .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: #333 transparent transparent transparent;
+    }
+
+    .about-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  background-color: #eaf9fe; /* Soft blue background */
+}
+
+/* Styling for the info box */
+.info-box {
+  background-color: #f8f9fa; /* Light background for the box */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: fit-content;
+}
+
+.audio-player {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #eaf9fe; /* Soft blue background */
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.audio-player h3 {
+  font-size: 1.5rem;
+  color: #2c3e50; /* Darker shade for the title */
+  margin-bottom: 10px;
+}
+
+audio {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+
+
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+
+    <div class="navbar">
+      <a href="index.html" class="logo">MIR<span>s.</span>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT ME</a></li>
+        <li><a href="education.html">EDUCATIONAL</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <section id="about" class="about">
+        <div class="about-img">
+            <img src="miwa7.jpeg" alt="Mir About Image">
+        </div>
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <br><br>
+            <h3>Amira</span></h3>
+            <br><br>
+    
+            <!-- Age, Full Name, Location and other details -->
+
+          <div class="info-box">
+            <div class="info">
+              <p><strong>Full Name:</strong> Nurdalilah Amirah</p>
+              <p><strong>Age:</strong> 31 years old</p>
+              <p><strong>Address:</strong> No.126, Jalan Astana,Petra Jaya, 93050 Kuching, Sarawak, Malaysia</p>
+              <p><strong>Language:</strong> Malay/English/french</p>
+              <p><strong>Expertise:</strong> Scuba diving, Research & Data Analysis</p>
+              <p><strong>Interest:</strong> Reading, Research, Writing, Hiking, Water sports</p>
+              <p><strong>Favourite Show:</strong> The Greatest Show</p>
+              <p><strong>Goals:</strong> To become a successful author and to get certified as a data analyst</p>
+              <p><strong>Favourite Songs:</strong> billie eilish wildflower </p>
+            </div>
+
+            <div class="audio-player">
+              <h3>Listen to My Favorite Song:</h3>
+              <audio controls autoplay loop>
+                <source src="billie.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            
+          </div>
+    
+            <br><br>
+            <p></p>
+            
+            <a href="education.html" class="btn-2">Educational Background</a>
+        </div>
+    </section>
+    
+    <style>
+      /* About Section Styling */
+      .about {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 50px 20px;
+          background: #f0f4f8;
+          gap: 50px;
+      }
+    
+      .about-img img {
+          width: 300px;
+          height: auto;
+          border-radius: 10px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          transform: translateX(-50px);
+          animation: fadeInImage 1s ease-out forwards;
+      }
+    
+      .about-content {
+          max-width: 600px;
+          opacity: 0;
+          transform: translateY(30px);
+          animation: fadeInContent 1s ease-out forwards;
+      }
+    
+      .about-content .heading {
+          font-size: 2.5rem;
+          font-weight: bold;
+          color: #4e6b97;
+      }
+    
+      .about-content .info {
+          font-size: 1.1rem;
+          color: #444;
+          line-height: 1.8;
+          margin-bottom: 20px;
+      }
+    
+      .about-content .info p {
+          opacity: 0;
+          transform: translateY(30px);
+          animation: fadeInInfo 1s ease-out forwards;
+          animation-delay: 0.5s; /* Delay each info */
+      }
+    
+      .about-content .info p:nth-child(1) {
+          animation-delay: 0.6s;
+      }
+    
+      .about-content .info p:nth-child(2) {
+          animation-delay: 0.8s;
+      }
+    
+      .about-content .info p:nth-child(3) {
+          animation-delay: 1s;
+      }
+    
+      .about-content .info p:nth-child(4) {
+          animation-delay: 1.2s;
+      }
+    
+      .about-content .info p:nth-child(5) {
+          animation-delay: 1.4s;
+      }
+    
+      .about-content .btn-2 {
+          display: inline-block;
+          padding: 12px 25px;
+          font-size: 1rem;
+          background: #4CAF50;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background 0.3s;
+      }
+    
+      .about-content .btn-2:hover {
+          background: #45a049;
+      }
+
+      #video-section {
+  padding: 40px 20px;
+  background-color: #f0f4f7;
+  text-align: center;
+}
+  
+      /* Animation Keyframes */
+      @keyframes fadeInImage {
+          from {
+              opacity: 0;
+              transform: translateX(-50px);
+          }
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+    
+      @keyframes fadeInContent {
+          from {
+              opacity: 0;
+              transform: translateY(30px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+    
+      @keyframes fadeInInfo {
+          from {
+              opacity: 0;
+              transform: translateY(30px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+    
+    </style>
+    
+    <script>
+      // JavaScript can be used here for further interactivity if needed
+    </script> 
+
+<div class="about-video">
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/kTXV-7-Qt7I?si=kdzOkq_zzMo30QUB" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+  </iframe>
+</div> 
+
+<script>
+  const audio = document.querySelector('.audio-player audio');
+  const aboutSection = document.querySelector('#about');
+
+  window.addEventListener('scroll', () => {
+    const sectionTop = aboutSection.getBoundingClientRect().top;
+    const sectionBottom = aboutSection.getBoundingClientRect().bottom;
+    const viewportHeight = window.innerHeight;
+
+    if (sectionTop < viewportHeight && sectionBottom > 0) {
+      // Section is visible, play the audio
+      audio.play();
+    } else {
+      // Section is not visible, pause the audio
+      audio.pause();
+    }
+  });
+</script>
+
+</section>
+
+<!-- Footer Section -->
+<footer style="background: #000000; color: #fff; padding: 2rem 0; text-align: center; margin-top: 2rem;">
+    <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+        <!-- Social Media Links -->
+        <div class="social-media" style="margin-bottom: 1rem;">
+            <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t4zIDHz8l7&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.tiktok.com/@bbybeargyu?_t=ZS-8t24unUa3Yj&_r=1" target="_blank" style="margin: 0 1rem; color: #fff; font-size: 1.5rem; text-decoration: none;">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links" style="margin-bottom: 1rem;">
+            <a href="index.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Home</a>
+            <a href="about.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">About</a>
+            <a href="education.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Education</a>
+            <a href="gallery.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Gallery</a>
+            <a href="contact.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Contact</a>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright" style="font-size: 0.9rem;">
+            <p>&copy; 2025 Ammera Portfolio. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+
+
+
+
+
+
+

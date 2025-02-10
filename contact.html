@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mira's Biography</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Main Section */
+    .main {
+      width: 100%;
+      height: 100vh;
+      background-color: #eaf9fe; /* Soft blue background */
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      font-family: 'Arial', sans-serif;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      padding: 20px 0;
+      align-items: center;
+      justify-content: space-between;
+      background-color:  #f6b7b7;
+      border-radius: 8px;
+    }
+
+    .navbar .logo {
+    font-size: 17px;
+    color: #e952ad;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.navbar .logo:hover{
+    color: #e952ad;
+    text-shadow: 0 0 25px black;
+    transform: scale(1.1);
+}
+
+span{
+    color: rgb(49, 216, 49);
+}
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: #032503; /* Soft green on hover */
+    }
+
+    /* Info Section */
+    .info {
+      margin-left: 7%;
+      margin-top: 10%;
+      color: #333; /* Dark text for better contrast */
+    }
+
+    .info h1 {
+      font-size: 60px;
+      letter-spacing: 2px;
+      line-height: 70px;
+      color: #2c3e50; /* Darker shade for the main title */
+    }
+
+    .info h3 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      line-height: 28px;
+      color: #7f8c8d; /* Slightly lighter color for the subheading */
+    }
+
+    .info span {
+      color: #0c1a0c; /* Accent color */
+    }
+
+    .info a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: #2c3e50;
+      margin: 26px 0;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .info a:hover {
+      background: #66cc66;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .contact-form-container {
+      flex: 2;
+    }
+
+    .contact-section h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .contact-section h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #8fc088;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #8fc088;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #6da06d;
+    }
+
+    /* Images Section */
+    .images-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .images-container img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Social Media Icons */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: rgb(138, 19, 37);
+      transition: color 0.4s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: rgb(209, 208, 209);
+    }
+
+    /* Map Section */
+    .map-container {
+      width: 100%;
+      max-width: 1000px;
+      height: 400px;
+      margin-top: 30px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="logo">MIR<span>s.</span>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT ME</a></li>
+      <li><a href="education.html">EDUCATIONAL</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <!-- Contact Section -->
+<div class="contact-section">
+  <!-- Contact Form -->
+  <div class="contact-form-container">
+      <h1>Contact Mira</h1>
+      <h3>I'd love to hear from you! Feel free to reach out to me.</h3>
+
+      <form id="contactForm" class="contact-form">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+          <label for="phone">Phone Number:</label>
+<div style="display: flex; gap: 10px;">
+    <!-- Country Code Dropdown -->
+    <select id="countryCode" name="countryCode" style="padding: 10px; font-size: 16px; border-radius: 5px; flex: 0.3;" required>
+        <option value="" disabled selected>Select Country Code</option>
+        <option value="+1">+1 (United States)</option>
+        <option value="+44">+44 (United Kingdom)</option>
+        <option value="+91">+91 (India)</option>
+        <option value="+61">+61 (Australia)</option>
+        <option value="+81">+81 (Japan)</option>
+        <option value="+86">+86 (China)</option>
+        <option value="+49">+49 (Germany)</option>
+        <option value="+33">+33 (France)</option>
+        <option value="+39">+39 (Italy)</option>
+        <option value="+7">+7 (Russia)</option>
+        <option value="+34">+34 (Spain)</option>
+        <option value="+55">+55 (Brazil)</option>
+        <option value="+92">+92 (Pakistan)</option>
+        <option value="+27">+27 (South Africa)</option>
+        <option value="+82">+82 (South Korea)</option>
+        <option value="+62">+62 (Indonesia)</option>
+        <option value="+966">+966 (Saudi Arabia)</option>
+        <option value="+65">+65 (Singapore)</option>
+        <option value="+234">+234 (Nigeria)</option>
+        <option value="+351">+351 (Portugal)</option>
+        <option value="+60">+60 (Malaysia)</option>
+        <option value="+94">+94 (Sri Lanka)</option>
+        <option value="+47">+47 (Norway)</option>
+        <option value="+46">+46 (Sweden)</option>
+        <option value="+31">+31 (Netherlands)</option>
+        <option value="+20">+20 (Egypt)</option>
+        <option value="+63">+63 (Philippines)</option>
+        <option value="+90">+90 (Turkey)</option>
+        <option value="+213">+213 (Algeria)</option>
+        <option value="+32">+32 (Belgium)</option>
+        <option value="+43">+43 (Austria)</option>
+        <option value="+48">+48 (Poland)</option>
+        <option value="+30">+30 (Greece)</option>
+        <option value="+45">+45 (Denmark)</option>
+        <option value="+64">+64 (New Zealand)</option>
+        <option value="+56">+56 (Chile)</option>
+        <option value="+58">+58 (Venezuela)</option>
+        <option value="+507">+507 (Panama)</option>
+        <option value="+52">+52 (Mexico)</option>
+        <option value="+98">+98 (Iran)</option>
+        <option value="+420">+420 (Czech Republic)</option>
+        <option value="+593">+593 (Ecuador)</option>
+        <option value="+505">+505 (Nicaragua)</option>
+        <option value="+250">+250 (Rwanda)</option>
+        <option value="+264">+264 (Namibia)</option>
+        <!-- You can add more countries by following the same pattern -->
+    </select>
+    <!-- Phone Number Input -->
+    <input type="text" id="phone" name="phone" placeholder="Your Phone Number" required style="flex: 1;">
+</div>
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+
+          <button type="submit">Send Message</button>
+      </form>
+
+      <div id="successMessage" style="display:none; margin-top:20px; color:green; text-align:center; font-weight:bold;">
+          Your message has been sent successfully!
+      </div>
+  </div>
+
+  <!-- Images Section -->
+  <div class="images-container">
+      <img src="ameerave.jpeg" alt="Photo 1">
+  </div>
+</div>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from reloading the page
+      document.getElementById('successMessage').style.display = 'block'; // Show success message
+      this.reset(); // Clear the form fields
+  });
+</script>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from reloading the page
+      document.getElementById('successMessage').style.display = 'block'; // Show success message
+      this.reset(); // Clear the form fields
+    });
+  </script>
+</body>
+
+</html>
+
+<!-- Map Section -->
+<div class="map-container">
+  <!-- Embed Google Map -->
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.7413675684127!2d110.36593281504663!3d1.5538480085098944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1d6db1ec6dbf%3A0x8b92dbd73563c618!2sKuching%2C%20Sarawak!5e0!3m2!1sen!2smy!4v1676575505735!5m2!1sen!2smy" 
+    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from reloading the page
+  document.getElementById('successMessage').style.display = 'block'; // Show success message
+  this.reset(); // Clear the form fields
+});
+</script>
+</body>
+</html>
+
+
+<script>
+  const countryCodes = [
+      { code: "+1", country: "United States" },
+      { code: "+44", country: "United Kingdom" },
+      { code: "+91", country: "India" },
+      { code: "+61", country: "Australia" },
+      { code: "+81", country: "Japan" },
+      { code: "+86", country: "China" },
+      { code: "+49", country: "Germany" },
+      { code: "+33", country: "France" },
+      { code: "+39", country: "Italy" },
+      { code: "+7", country: "Russia" },
+      { code: "+34", country: "Spain" },
+      { code: "+55", country: "Brazil" },
+      { code: "+92", country: "Pakistan" },
+      { code: "+27", country: "South Africa" },
+      { code: "+82", country: "South Korea" },
+      { code: "+62", country: "Indonesia" },
+      { code: "+966", country: "Saudi Arabia" },
+      { code: "+65", country: "Singapore" },
+      { code: "+234", country: "Nigeria" },
+      { code: "+351", country: "Portugal" },
+      { code: "+60", country: "Malaysia" },
+      { code: "+94", country: "Sri Lanka" },
+      { code: "+47", country: "Norway" },
+      { code: "+46", country: "Sweden" },
+      { code: "+31", country: "Netherlands" },
+      { code: "+20", country: "Egypt" },
+      { code: "+63", country: "Philippines" },
+      { code: "+90", country: "Turkey" },
+      { code: "+213", country: "Algeria" },
+      { code: "+32", country: "Belgium" },
+      { code: "+43", country: "Austria" },
+      { code: "+48", country: "Poland" },
+      { code: "+30", country: "Greece" },
+      { code: "+45", country: "Denmark" },
+      { code: "+64", country: "New Zealand" },
+      { code: "+56", country: "Chile" },
+      { code: "+58", country: "Venezuela" },
+      { code: "+507", country: "Panama" },
+      { code: "+52", country: "Mexico" },
+      { code: "+98", country: "Iran" },
+      { code: "+420", country: "Czech Republic" },
+      { code: "+593", country: "Ecuador" },
+      { code: "+505", country: "Nicaragua" },
+      { code: "+250", country: "Rwanda" },
+      { code: "+264", country: "Namibia" }
+  ];
+
+  const countryCodeDropdown = document.getElementById('countryCode');
+
+  countryCodes.forEach(({ code, country }) => {
+      const option = document.createElement('option');
+      option.value = code;
+      option.textContent = `${code} (${country})`;
+      countryCodeDropdown.appendChild(option);
+  });
+</script>
+
+
+
+</section>
+
+<!-- Footer Section -->
+<footer style="background: #000000; color: #fff; padding: 2rem 0; text-align: center; margin-top: 2rem;">
+    <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+       <!-- Social Media Links -->
+<div class="social-media" style="margin-bottom: 1rem;">
+    <!-- Facebook Link -->
+    <div class="icons">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      </div>
+    </div>
+</div>
+
+
+        <!-- Footer Links -->
+        <div class="footer-links" style="margin-bottom: 1rem;">
+            <a href="index.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Home</a>
+            <a href="about.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">About</a>
+            <a href="education.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Education</a>
+            <a href="gallery.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Gallery</a>
+            <a href="contact.html" style="margin: 0 1rem; color: #fff; text-decoration: none;">Contact</a>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright" style="font-size: 0.9rem;">
+            <p>&copy; 2025 Ammera Portfolio. All Rights Reserved.</p>
+        </div>
+    </div>
+    
+</footer>
+</body>
